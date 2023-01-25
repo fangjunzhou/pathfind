@@ -17,22 +17,19 @@
 #  License along with LIBOI.  If not, see <http://www.gnu.org/licenses/>.
 
 
-cmake_minimum_required(VERSION 2.8)
+cmake_minimum_required(VERSION 3.25.1)
 project(pathfind)
 
 file(GLOB SOURCE *.cpp)
 
 # build the static and dynamic libraries
-add_library(pathfind SHARED ${SOURCE})
+add_library(pathfind ${SOURCE})
 target_include_directories(pathfind PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 
-add_library(pathfind_static STATIC ${SOURCE})
-target_include_directories(pathfind_static PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
-
 # build the example application
-add_executable(example example.cpp)
-target_link_libraries(example pathfind_static)
+# add_executable(example example.cpp)
+# target_link_libraries(example pathfind_static)
 
 # installation targets
-install(TARGETS pathfind_static DESTINATION lib)
-install(FILES pathfind.hpp DESTINATION include)
+# install(TARGETS pathfind_static DESTINATION lib)
+# install(FILES pathfind.hpp DESTINATION include)
